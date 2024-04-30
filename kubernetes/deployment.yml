@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: handwritten-recognition-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: handwritten-recognition-app
+  template:
+    metadata:
+      labels:
+        app: handwritten-recognition-app
+    spec:
+      containers:
+      - name: handwritten-recognition-app
+        image: gcr.io/deep-421921/handwritten-recognition-app:v1
+        ports:
+        - containerPort: 8081
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: handwritten-recognition-app
+spec:
+  selector:
+    app: handwritten-recognition-app
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 8081
+  type: LoadBalancer
