@@ -40,13 +40,13 @@ jobs:
 
       - name: Build and push Docker image
         run: |
-          docker build -t gcr.io/deep-421921/handwritten-recognition-app:v1 .
-          docker push gcr.io/deep-421921/handwritten-recognition-app:v1
+          docker build -t gcr.io/deep-421921/handwritten-recognition-app:v1.1 .
+          docker push gcr.io/deep-421921/handwritten-recognition-app:v1.1
 
       - name: Deploy to GKE
         run: |
           gcloud container clusters get-credentials handwritten-recognition-cluster --zone europe-west1-b --project deep-421921
-          kubectl apply -f kubernetes/deployment.yaml
+          kubectl apply -f kubernetes/deployment.yml
 
       - name: Verify deployment
         run: |
