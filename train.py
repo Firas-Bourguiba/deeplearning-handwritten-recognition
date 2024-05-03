@@ -9,11 +9,11 @@ def train_and_save(): # def d'une fonction qui encapsule le processus d'entraine
     X_train, X_test = X_train / 255.0, X_test / 255.0 #  # Normalisation des données en divisant par 255.0 pour qu'elles soient comprises entre 0 et 1 pour accélérer l'entrainement
 
     # Build the neural network model
-    model = tf.keras.models.Sequential(                    # Création d'un modèle séquentiel pour creer des modeles couche par couche pour la plupart des problèmes
+    model = tf.keras.models.Sequential([                 # Création d'un modèle séquentiel pour creer des modeles couche par couche pour la plupart des problèmes
         tf.keras.layers.Flatten(input_shape=(28, 28)),      # Aplatir les données d'entrée en un vecteur 1D ou transfromation de l'image 28x28 (2d) en un vecteur 1D de 784
         tf.keras.layers.Dense(128, activation='relu'),      # Ajout d'une couche dense'(entierement connécté) de 128 neurones avec une fonction d'activation 'relu'
         tf.keras.layers.Dense(128, activation='relu'),      # Ajout d'une autre couche dense de 128 neurones avec une fonction d'activation 'relu' pour introduire de la non-linéarité
-        tf.keras.layers.Dense(10, activation='softmax'))     # Ajout d'une couche de sortie de 10 neurones un pour chaque classe de chiffres (0-9) avec une fonction d'activation 'softmax' pour la classification multiclasse
+        tf.keras.layers.Dense(10, activation='softmax')])     # Ajout d'une couche de sortie de 10 neurones un pour chaque classe de chiffres (0-9) avec une fonction d'activation 'softmax' pour la classification multiclasse
 
     # Compilation du model en spécifiant l'optimiseur adam, la fonction de perte 'sparse_categorical_crossentropy' et la métrique 'accuracy' (précision)
     model.compile(optimizer='adam',
