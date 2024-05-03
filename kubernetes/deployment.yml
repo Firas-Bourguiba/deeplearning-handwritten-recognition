@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: handwritten-recognition-app
-        image: gcr.io/deep-421921/handwritten-recognition-app:v1.5
+        image: gcr.io/deep-421921/handwritten-recognition-app:v1.6
         ports:
         - containerPort: 8081
 ---
